@@ -1,0 +1,7599 @@
+{
+	"info": {
+		"_postman_id": "df1d4363-a6cb-413a-8bf4-b20851933924",
+		"name": "客户相关",
+		"description": "获取客户信息详情\n登录客户修改资料\n添加客户意见&BUG\n获取当前登录客户的常用预定人列表\n根据登录用户获取意见&BUG分页数据\n新增/修改常用预订人信息",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "获取客户信息详情",
+			"item": [
+				{
+					"name": "获取客户信息详情--请求方式为get",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+								"exec": [
+									"pm.test(\"校验code值为200且返回客户信息详情\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(pm.response.text()).to.include(\"nickName\")      //客户信息详情data中含有客户信息",
+									"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "channel",
+								"value": "IOS",
+								"type": "text"
+							},
+							{
+								"key": "appVersion",
+								"value": "1.0",
+								"type": "text"
+							},
+							{
+								"key": "imei",
+								"value": "999999",
+								"type": "text"
+							},
+							{
+								"key": "model",
+								"value": "xs",
+								"type": "text"
+							},
+							{
+								"key": "systemVersion",
+								"value": "12.3",
+								"type": "text"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localhost}}/app/customer/customerDetail.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"customer",
+								"customerDetail.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取客户信息详情--请求方式为post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6bc4500-c978-4b47-a23b-5bb6f71fe4eb",
+								"exec": [
+									"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"500\");",
+									"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localhost}}/app/customer/customerDetail.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"customer",
+								"customerDetail.html"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "登录客户修改资料",
+			"item": [
+				{
+					"name": "登录客户修改资料--输入所有正确参数",
+					"item": [
+						{
+							"name": "登录客户修改资料--输入所有正确参数",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"大兄弟\",\n\t\"nickName\":\"我是你兄弟\",\n\t\"personSign\":\"我很帅\",\n\t\"birthday\":\"1995-04-03 00:00:00\",\n\t\"sex\":\"0\",\n\t\"idCard\":\"513030199303221620\",\n\t\"email\":\"228287433@qq.com\",\n\t\"qqUnionid\":\"228287433\",\n\t\"headImg\":\"https://headimgtest.jpg\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--输入所有正确参数",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    pm.expect(jsonData.data.personSign).to.eql(\"我很帅\");",
+											"    pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改姓名--输入空格",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改姓名--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\" \"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改姓名--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.data.name).to.eql(\" \");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改姓名--输入字符串",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改姓名--输入字符串",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"string\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改姓名--输入字符串",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.data.name).to.eql(\"string\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改姓名--输入字符串+中文",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改姓名--输入字符串+中文",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"string大兄弟\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改姓名--输入字符串+中文",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.data.name).to.eql(\"string大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改姓名--输入特殊字符",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改姓名--输入特殊字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"@\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改姓名--输入特殊字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.data.name).to.eql(\"@\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改姓名--输入敏感词",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改姓名--输入敏感词",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回文本检测非法\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"文本检测非法\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"法轮功 台独\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改昵称--输入8字符",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改昵称--输入8字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nickName\":\"stttring\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改昵称--输入8字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    pm.expect(jsonData.data.nickName).to.eql(\"stttring\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改昵称--输入9字符",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改昵称--输入9字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nickName\":\"stttringg\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改昵称--输入9字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    pm.expect(jsonData.data.nickName).to.eql(\"stttringg\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改昵称--输入空格",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改昵称--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nickName\":\" \"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改昵称--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    pm.expect(jsonData.data.nickName).to.eql(\" \");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改昵称--输入敏感词",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改昵称--输入敏感词",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回文本检测非法\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"文本检测非法\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nickName\":\"卧槽 辣鸡\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改个性签名--输入50字符",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改个性签名--输入50字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"personSign\":\"hffhjsdnskjbshgbdhgbdfhgbkjdsnklsajndklbahdbfjkbhg\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改个性签名--输入50字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    pm.expect(jsonData.data.personSign).to.eql(\"hffhjsdnskjbshgbdhgbdfhgbkjdsnklsajndklbahdbfjkbhg\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改个性签名--输入51字符",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改个性签名--输入51字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"personSign\":\"hffhjsdnskjbshgbdhgbdfhgbkjdsnklsajndklbahdbfjkbhgf\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改个性签名--输入51字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    pm.expect(jsonData.data.personSign).to.eql(\"hffhjsdnskjbshgbdhgbdfhgbkjdsnklsajndklbahdbfjkbhgf\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改个性签名--输入为空",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改个性签名--输入为空",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"personSign\":\"\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改个性签名--输入为空",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改个性签名--输入空格",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改个性签名--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"personSign\":\" \"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改个性签名--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    pm.expect(jsonData.data.personSign).to.eql(\" \");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改个性签名--输入敏感词",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改个性签名--输入敏感词",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回文本检测非法\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"文本检测非法\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"personSign\":\"习近平 政府\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改生日--输入(xxxx-xx-xx)",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改生日--输入(xxxx-xx-xx)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"birthday\":\"1995-04-03\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改生日--输入(xxxx-xx-xx,yy:yy:yy)",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改生日--输入(xxxx-xx-xx,yy:yy:yy)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"birthday\":\"1995-04-03,00:00:00\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改生日--输入(xxxx/xx/xx yy:yy:yy)",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改生日--输入(xxxx/xx/xx yy:yy:yy)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"birthday\":\"1995/04/03 00:00:00\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改生日--输入(xxxxnxnx yy:yy:yy)",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改生日--输入(xxxxnxnx yy:yy:yy)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"birthday\":\"19950403 00:00:00\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改生日--输入为空",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改生日--输入为空",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"birthday\":\"\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改生日--输入为空",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改生日--输入空格",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改生日--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"birthday\":\" \"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改生日--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改生日--输入特殊字符",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改生日--输入特殊字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"birthday\":\"@\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改性别--输入1",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改性别--输入1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"sex\":\"1\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改性别--输入1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    pm.expect(jsonData.data.sex).to.eql(\"1\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改性别--输入2",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改性别--输入2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"sex\":\"2\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改性别--输入2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    pm.expect(jsonData.data.sex).to.eql(\"2\");                                    //0女生，1男生",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改性别--输入特殊字符",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改性别--输入特殊字符",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"sex\":\"@\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改身份证--输入18位末尾为V",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改身份证--输入18位末尾为V",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回身份证号码格式有误\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"身份证号码格式有误\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idCard\":\"51303019930322162V\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改身份证--输入17位数字",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改身份证--输入17位数字",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回身份证号码格式有误\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"身份证号码格式有误\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idCard\":\"51303019930322162\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改身份证--输入19位数字",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改身份证--输入19位数字",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为500且返回身份证号码格式有误\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"500\");",
+											"    pm.expect(pm.response.text()).to.include(\"身份证号码格式有误\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idCard\":\"5130301993032216202\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改身份证--输入空格",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改身份证--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idCard\":\" \"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改身份证--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    pm.expect(jsonData.data.idCard).to.eql(\" \");",
+											"    // pm.expect(jsonData.data.email).to.eql(\"228287433@qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改邮箱--输入格式不正确",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改邮箱--输入格式不正确",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\":\"228287433qq.com\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改邮箱--输入格式不正确",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    pm.expect(jsonData.data.email).to.eql(\"228287433qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录客户修改资料--修改邮箱--输入空格",
+					"item": [
+						{
+							"name": "登录客户修改资料--修改邮箱--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f553e926-c3df-4b7a-a1ab-5fa5d0a32644",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改客户信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改客户信息成功\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\":\"2282874 33 @ qq.com\"\n}"
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/updateCustomerInfo.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"updateCustomerInfo.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取客户信息详情--修改邮箱--输入空格",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7a8c2786-6dce-4b31-b7e6-a119c099b791",
+										"exec": [
+											"pm.test(\"校验code值为200且返回评论详情内容都对应\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    // pm.expect(jsonData.data.name).to.eql(\"大兄弟\");",
+											"    // pm.expect(jsonData.data.nickName).to.eql(\"我是你兄弟\");",
+											"    // pm.expect(jsonData.data.personSign).to.eql(\"世界看不见你，你看得见世界\");",
+											"    // pm.expect(jsonData.data.birthday).to.eql(\"1995-04-03 00:00:00\");",
+											"    // pm.expect(jsonData.data.sex).to.eql(\"0\");",
+											"    // pm.expect(jsonData.data.idCard).to.eql(\"513030199303221620\");",
+											"    pm.expect(jsonData.data.email).to.eql(\"2282874 33 @ qq.com\");",
+											"    // pm.expect(jsonData.data.headImg).to.eql(\"https://headimgtest.jpg\");",
+											"    pm.expect(jsonData.msg).to.eql(\"客户信息详情\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/customerDetail.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"customerDetail.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2cf3337-a3f0-4c33-b615-d0f6b73201b6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50e6f63a-7d87-41d9-939e-74b85fc336c4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "添加客户意见&BUG",
+			"item": [
+				{
+					"name": "添加客户意见&BUG--输入所有正确参数",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为200且返回提交意见成功\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"提交意见成功\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"type\":\"1\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--输入所有正确参数（修改后）",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为200且返回提交意见成功\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"提交意见成功\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"content\":\"疯狂点击首页图标，没反应\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加标题--参数title不存在",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为499且返回参数值不能为空\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"499\");",
+									"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"type\":\"2\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加标题--输入空title",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为499且返回参数值不能为空\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"499\");",
+									"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"type\":\"2\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加标题--输入title含空格",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为200且返回提交意见成功\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"提交意见成功\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮 大法 好\",\n\t\"type\":\"2\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加标题--输入title为特殊字符",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为200且返回提交意见成功\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"提交意见成功\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"@\",\n\t\"type\":\"2\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加类型--输入type不存在",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为499且返回参数值不能为空\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"499\");",
+									"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加类型--输入空type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为499且返回参数值不能为空\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"499\");",
+									"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"type\":\"\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加类型--输入type为2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为200且返回提交意见成功\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"提交意见成功\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"type\":\"2\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加类型--输入type为3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为200且返回提交意见成功\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"提交意见成功\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"type\":\"3\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加内容--输入content不存在",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为499且返回参数值不能为空\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"499\");",
+									"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"type\":\"2\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加内容--输入空content",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为499且返回参数值不能为空\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"499\");",
+									"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"type\":\"2\",\n\t\"content\":\"\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg,http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加图片--输入imgs不存在",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为200且返回提交意见成功\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"提交意见成功\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"type\":\"2\",\n\t\"content\":\"疯狂点击首页图标，没反应\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加图片--输入多张imgs以空格分隔",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为200且返回提交意见成功\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"提交意见成功\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"type\":\"2\",\n\t\"content\":\"略略略\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).jpg http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053642785timg (10) - 副本.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加客户意见&BUG--添加图片--输入imgs图片格式不正确",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdc42a38-8cad-4d69-816c-cf6755452ea9",
+								"exec": [
+									"pm.test(\"校验code值为200且返回提交意见成功\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"提交意见成功\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"法轮大法好\",\n\t\"type\":\"2\",\n\t\"content\":\"疯狂点击首页图标，没反应\",\n\t\"imgs\":\"http://earth-house.oss-cn-beijing.aliyuncs.com/ow_product/555318128527757312_1553053566763timg (9).doc\"\n}"
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/submitOpinion.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"submitOpinion.html"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "根据登录客户获取意见&BUG分页数据",
+			"item": [
+				{
+					"name": "根据客户id查询用户提交的意见分页列表--页码1,每1条",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b70c6275-08aa-4730-a010-6d5183debec8",
+								"exec": [
+									"pm.test(\"校验code值为200且返回意见分页数据\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.data.pageSize).to.eql(\"1\");",
+									"    pm.expect(jsonData.data.pageNum).to.eql(\"1\");",
+									"    pm.expect(jsonData.msg).to.eql(\"意见分页数据\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/getOpinionPage.html?page=1&limit=1",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"getOpinionPage.html"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "当前页码"
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"description": "每页数据量"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据客户id查询用户提交的意见分页列表--页码1,每0条",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "117e0c4c-46e2-4ee4-9029-9061828a67ca",
+								"exec": [
+									"pm.test(\"校验code值为200且返回对应页码1,评论0条的空列表数据\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.data.data).to.eql([]);",
+									"    pm.expect(jsonData.data.pageSize).to.eql(\"1\");",
+									"    pm.expect(jsonData.data.pageNum).to.eql(\"0\");",
+									"    pm.expect(jsonData.msg).to.eql(\"意见分页数据\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/getOpinionPage.html?page=1&limit=0",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"getOpinionPage.html"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "当前页码"
+								},
+								{
+									"key": "limit",
+									"value": "0",
+									"description": "每页数据量"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据客户id查询用户提交的意见分页列表--页码1,每-1条",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "117e0c4c-46e2-4ee4-9029-9061828a67ca",
+								"exec": [
+									"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"500\");",
+									"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/getOpinionPage.html?page=1&limit=-1",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"getOpinionPage.html"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "当前页码"
+								},
+								{
+									"key": "limit",
+									"value": "-1",
+									"description": "每页数据量"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据客户id查询用户提交的意见分页列表--页码\"1\",每1条",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "117e0c4c-46e2-4ee4-9029-9061828a67ca",
+								"exec": [
+									"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"500\");",
+									"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/getOpinionPage.html?page=\"1\"&limit=1",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"getOpinionPage.html"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "\"1\"",
+									"description": "当前页码"
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"description": "每页数据量"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据客户id查询用户提交的意见分页列表--页码1,每\"1\"条",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "117e0c4c-46e2-4ee4-9029-9061828a67ca",
+								"exec": [
+									"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"500\");",
+									"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localhost}}/app/appOpinion/getOpinionPage.html?page=1&limit=\"1\"",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"appOpinion",
+								"getOpinionPage.html"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "当前页码"
+								},
+								{
+									"key": "limit",
+									"value": "\"1\"",
+									"description": "每页数据量"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "获取当前登录客户的常用预订人列表",
+			"item": [
+				{
+					"name": "获取当前登录客户的常用预订人列表--请求方式为get",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef8351c5-98a2-46b1-9201-f5f17c31366c",
+								"exec": [
+									"pm.test(\"校验code值为200且返回常用预订人信息列表\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"200\");",
+									"    pm.expect(jsonData.msg).to.eql(\"常用预订人信息列表\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "channel",
+								"value": "IOS",
+								"type": "text"
+							},
+							{
+								"key": "appVersion",
+								"value": "1.0",
+								"type": "text"
+							},
+							{
+								"key": "imei",
+								"value": "999999",
+								"type": "text"
+							},
+							{
+								"key": "model",
+								"value": "xs",
+								"type": "text"
+							},
+							{
+								"key": "systemVersion",
+								"value": "12.3",
+								"type": "text"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localhost}}/app/customer/reservationsList.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"customer",
+								"reservationsList.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取当前登录客户的常用预订人列表--请求方式为post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef8351c5-98a2-46b1-9201-f5f17c31366c",
+								"exec": [
+									"pm.test(\"校验code值为500且返回服务器异常\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql(\"500\");",
+									"    pm.expect(pm.response.text()).to.include(\"服务器异常\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "channel",
+								"type": "text",
+								"value": "IOS"
+							},
+							{
+								"key": "appVersion",
+								"type": "text",
+								"value": "1.0"
+							},
+							{
+								"key": "imei",
+								"type": "text",
+								"value": "999999"
+							},
+							{
+								"key": "model",
+								"type": "text",
+								"value": "xs"
+							},
+							{
+								"key": "systemVersion",
+								"type": "text",
+								"value": "12.3"
+							},
+							{
+								"key": "earth.house.app.auth",
+								"type": "text",
+								"value": "{{auth}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localhost}}/app/customer/reservationsList.html",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"app",
+								"customer",
+								"reservationsList.html"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "新增/修改常用预订人信息",
+			"item": [
+				{
+					"name": "新增/修改常用预订人信息--输入所有正确参数",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入所有正确参数",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改常用预订人信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改常用预订人信息成功\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?id=1120173699975114753&customerName=涵涵&customerPhone=13896251458",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1120173699975114753",
+											"description": "记录id（不填时为新增，修改时必填）"
+										},
+										{
+											"key": "customerName",
+											"value": "涵涵",
+											"description": "常用预订人姓名"
+										},
+										{
+											"key": "customerPhone",
+											"value": "13896251458",
+											"description": "常用预订人电话号码"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取当前登录客户的常用预订人列表--输入所有正确参数",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ef8351c5-98a2-46b1-9201-f5f17c31366c",
+										"exec": [
+											"pm.test(\"校验code值为200且返回常用预订人信息列表\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"常用预订人信息列表\");",
+											"    ",
+											"    var data = jsonData.data;",
+											"    var n = data.length;",
+											"    var json = data[n-1];      //获取数组最后一个json字符串",
+											"    // console.log(json);",
+											"    ",
+											"    pm.expect(json.customerPhone).to.eql(\"13896251458\");",
+											"    pm.expect(json.id).to.eql(\"1120173699975114753\");       //要修改的常用联系人list列表中的id",
+											"    pm.expect(json.customerName).to.eql(\"涵涵\");",
+											"});",
+											"",
+											"    "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/reservationsList.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"reservationsList.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "新增/修改常用预订人信息--输入id缺失",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入id缺失",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为200且返回保存常用预订人信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"保存常用预订人信息成功\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?customerName=你兄弟&customerPhone=18781972732",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "customerName",
+											"value": "你兄弟",
+											"description": "常用预订人姓名"
+										},
+										{
+											"key": "customerPhone",
+											"value": "18781972732",
+											"description": "常用预订人电话号码"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取当前登录客户的常用预订人列表--输入id缺失",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ef8351c5-98a2-46b1-9201-f5f17c31366c",
+										"exec": [
+											"pm.test(\"校验code值为200且返回常用预订人信息列表\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"常用预订人信息列表\");",
+											"    ",
+											"    var data = jsonData.data;",
+											"    var n = data.length;",
+											"    var json = data[n-1];      //获取数组最后一个json字符串",
+											"    // console.log(json);",
+											"    ",
+											"    pm.expect(json.customerPhone).to.eql(\"18781972732\");",
+											"    // pm.expect(json.id).to.eql(\"1120173699975114753\");       //要修改的常用联系人list列表中的id",
+											"    pm.expect(json.customerName).to.eql(\"你兄弟\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/reservationsList.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"reservationsList.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "新增/修改常用预订人信息--输入空id",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入空id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为200且返回保存常用预订人信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"保存常用预订人信息成功\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?id=&customerName=你朋友&customerPhone=18782289215",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "",
+											"description": "记录id（不填时为新增，修改时必填）"
+										},
+										{
+											"key": "customerName",
+											"value": "你朋友",
+											"description": "常用预订人姓名"
+										},
+										{
+											"key": "customerPhone",
+											"value": "18782289215",
+											"description": "常用预订人电话号码"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取当前登录客户的常用预订人列表--输入空id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ef8351c5-98a2-46b1-9201-f5f17c31366c",
+										"exec": [
+											"pm.test(\"校验code值为200且返回常用预订人信息列表\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"常用预订人信息列表\");",
+											"    ",
+											"    var data = jsonData.data;",
+											"    var n = data.length;",
+											"    var json = data[n-1];      //获取数组最后一个json字符串",
+											"    // console.log(json);",
+											"    ",
+											"    pm.expect(json.customerPhone).to.eql(\"18782289215\");",
+											"    // pm.expect(json.id).to.eql(\"1120173699975114753\");       //要修改的常用联系人list列表中的id",
+											"    pm.expect(json.customerName).to.eql(\"你朋友\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/reservationsList.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"reservationsList.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "新增/修改常用预订人信息--输入不存在id（customerPhone存在）",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入不存在id（customerPhone存在）",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改常用预订人信息失败\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改常用预订人信息失败\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?id=123456789012345678&customerName=涵涵&customerPhone=18782289215",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "123456789012345678",
+											"description": "记录id（不填时为新增，修改时必填）"
+										},
+										{
+											"key": "customerName",
+											"value": "涵涵",
+											"description": "常用预订人姓名"
+										},
+										{
+											"key": "customerPhone",
+											"value": "18782289215",
+											"description": "常用预订人电话号码"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "新增/修改常用预订人信息--输入customerName缺失",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入customerName缺失",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为499且返回保存常用预订人信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"499\");",
+											"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?id=1113651004664930305&customerPhone=18782289215",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1113651004664930305",
+											"description": "记录id（不填时为新增，修改时必填）"
+										},
+										{
+											"key": "customerPhone",
+											"value": "18782289215",
+											"description": "常用预订人电话号码"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "新增/修改常用预订人信息--输入空customerName",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入空customerName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为499且返回保存常用预订人信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"499\");",
+											"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?id=1120166846880837633&customerName=&customerPhone=18782289215",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1120166846880837633",
+											"description": "记录id（不填时为新增，修改时必填）"
+										},
+										{
+											"key": "customerName",
+											"value": "",
+											"description": "常用预订人姓名"
+										},
+										{
+											"key": "customerPhone",
+											"value": "18782289215",
+											"description": "常用预订人电话号码"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "新增/修改常用预订人信息--输入customerPhone缺失",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入customerPhone缺失",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为499且返回保存常用预订人信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"499\");",
+											"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?id=1120166922135040002&customerName=我我我",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1120166922135040002",
+											"description": "记录id（不填时为新增，修改时必填）"
+										},
+										{
+											"key": "customerName",
+											"value": "我我我",
+											"description": "常用预订人姓名"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "新增/修改常用预订人信息--输入空customerPhone",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入空customerPhone",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为499且返回保存常用预订人信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"499\");",
+											"    pm.expect(jsonData.msg).to.eql(\"参数值不能为空！\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?id=1120170065543589889&customerName=你你你&customerPhone=",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1120170065543589889",
+											"description": "记录id（不填时为新增，修改时必填）"
+										},
+										{
+											"key": "customerName",
+											"value": "你你你",
+											"description": "常用预订人姓名"
+										},
+										{
+											"key": "customerPhone",
+											"value": "",
+											"description": "常用预订人电话号码"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "新增/修改常用预订人信息--输入10位customerPhone",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入10位customerPhone",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改常用预订人信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改常用预订人信息成功\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?id=1113651004664930305&customerName=不知道&customerPhone=1878228921",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1113651004664930305",
+											"description": "记录id（不填时为新增，修改时必填）"
+										},
+										{
+											"key": "customerName",
+											"value": "不知道",
+											"description": "常用预订人姓名"
+										},
+										{
+											"key": "customerPhone",
+											"value": "1878228921",
+											"description": "常用预订人电话号码"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取当前登录客户的常用预订人列表--输入10位customerPhone",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ef8351c5-98a2-46b1-9201-f5f17c31366c",
+										"exec": [
+											"pm.test(\"校验code值为200且返回常用预订人信息列表\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"常用预订人信息列表\");",
+											"    ",
+											"    var data = jsonData.data;",
+											"    // var n = data.length;",
+											"    var json = data[2];      //获取数组第三个json字符串",
+											"    // console.log(json);",
+											"    ",
+											"    pm.expect(json.customerPhone).to.eql(\"1878228921\");",
+											"    pm.expect(json.id).to.eql(\"1113651004664930305\");       //要修改的常用联系人list列表中的id",
+											"    pm.expect(json.customerName).to.eql(\"不知道\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/reservationsList.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"reservationsList.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "新增/修改常用预订人信息--输入12位customerPhone",
+					"item": [
+						{
+							"name": "新增/修改常用预订人信息--输入12位customerPhone",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a25bb9f-8cc6-4bb1-8733-228101bdfccb",
+										"exec": [
+											"pm.test(\"校验code值为200且返回修改常用预订人信息成功\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"修改常用预订人信息成功\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "channel",
+										"value": "IOS",
+										"type": "text"
+									},
+									{
+										"key": "appVersion",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "imei",
+										"value": "999999",
+										"type": "text"
+									},
+									{
+										"key": "model",
+										"value": "xs",
+										"type": "text"
+									},
+									{
+										"key": "systemVersion",
+										"value": "12.3",
+										"type": "text"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/saveReservations.html?id=1120166846880837633&customerName=不知道&customerPhone=187822892152",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"saveReservations.html"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1120166846880837633",
+											"description": "记录id（不填时为新增，修改时必填）"
+										},
+										{
+											"key": "customerName",
+											"value": "不知道",
+											"description": "常用预订人姓名"
+										},
+										{
+											"key": "customerPhone",
+											"value": "187822892152",
+											"description": "常用预订人电话号码"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取当前登录客户的常用预订人列表--请求方式为get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ef8351c5-98a2-46b1-9201-f5f17c31366c",
+										"exec": [
+											"pm.test(\"校验code值为200且返回常用预订人信息列表\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.code).to.eql(\"200\");",
+											"    pm.expect(jsonData.msg).to.eql(\"常用预订人信息列表\");",
+											"    ",
+											"    var data = jsonData.data;",
+											"    // var n = data.length;",
+											"    var json = data[3];      //获取数组第四个json字符串",
+											"    // console.log(json);",
+											"    ",
+											"    pm.expect(json.customerPhone).to.eql(\"187822892152\");",
+											"    pm.expect(json.id).to.eql(\"1120166846880837633\");       //要修改的常用联系人list列表中的id",
+											"    pm.expect(json.customerName).to.eql(\"不知道\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "channel",
+										"type": "text",
+										"value": "IOS"
+									},
+									{
+										"key": "appVersion",
+										"type": "text",
+										"value": "1.0"
+									},
+									{
+										"key": "imei",
+										"type": "text",
+										"value": "999999"
+									},
+									{
+										"key": "model",
+										"type": "text",
+										"value": "xs"
+									},
+									{
+										"key": "systemVersion",
+										"type": "text",
+										"value": "12.3"
+									},
+									{
+										"key": "earth.house.app.auth",
+										"type": "text",
+										"value": "{{auth}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/app/customer/reservationsList.html",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"app",
+										"customer",
+										"reservationsList.html"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cf9b0c4e-606c-4a0a-9ff7-2d3bca20df76",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3ab2fad4-b339-4a94-8a8b-cd5b6aa524f4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

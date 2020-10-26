@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "be4897e6-029a-417b-9dbc-4a5853d54ea0",
+		"name": "用户登录获取验证码+登录鉴权码",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "发送短信验证码",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2af428d-5b39-4b29-a722-2c19424955be",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    tests[\"验证码发送成功\"] = jsonData.msg === \"验证码已发送至您的手机，请查收！\";",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "channel",
+						"value": "IOS",
+						"type": "text"
+					},
+					{
+						"key": "appVersion",
+						"value": "1.0",
+						"type": "text"
+					},
+					{
+						"key": "imei",
+						"value": "999999",
+						"type": "text"
+					},
+					{
+						"key": "model",
+						"value": "xs",
+						"type": "text"
+					},
+					{
+						"key": "systemVersion",
+						"value": "12.3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{localhost}}/app/sendSmsCode.html?phone={{phonenum}}",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"app",
+						"sendSmsCode.html"
+					],
+					"query": [
+						{
+							"key": "phone",
+							"value": "{{phonenum}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "连接数据库查询最新条短信验证码",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5abf1d5a-7bf4-4068-ab8d-190eff145d0a",
+						"exec": [
+							"// 1、连接数据库，首先启动cmd安装>>>npm install -g xmysql\r",
+							"// 2、再输入>>xmysql -h 192.168.8.180 -u root -p 123456 -d earth_house_dev_third\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(pm.response.text()).to.include('\"success\":1');\r",
+							"});\r",
+							"\r",
+							"var response = pm.response.json();\r",
+							"var n = response.length;\r",
+							"var codestr = response[n-1].req;      //获取数组最后一个json的req值\r",
+							"var codeobj = JSON.parse(codestr);\r",
+							"var code = codeobj.code\r",
+							"pm.environment.set(\"codenum\", code);      //将验证码存为环境变量\r",
+							"\r",
+							"// console.log(codestr);\r",
+							"// // console.log(codeobj);\r",
+							"// console.log(code);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/sms_log?_where=(phone,eq,{{phonenum}})",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"sms_log"
+					],
+					"query": [
+						{
+							"key": "_where",
+							"value": "(phone,eq,{{phonenum}})"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登录接口--根据验证码登录",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eac28314-afc3-4060-8b2f-cbff544408bc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"    tests[\"用户登陆成功\"] = jsonData.msg === \"用户登录成功\";",
+							"    ",
+							"pm.environment.set(\"auth\", jsonData.data);      //将登录鉴权码存为环境变量",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7d05a2ae-d1e9-458b-981b-e3f2e744b0f3",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "channel",
+						"value": "IOS",
+						"type": "text"
+					},
+					{
+						"key": "appVersion",
+						"value": "1.0",
+						"type": "text"
+					},
+					{
+						"key": "imei",
+						"value": "999999",
+						"type": "text"
+					},
+					{
+						"key": "model",
+						"value": "xs",
+						"type": "text"
+					},
+					{
+						"key": "systemVersion",
+						"value": "12.3",
+						"type": "text"
+					},
+					{
+						"key": "longitude",
+						"value": "99.6",
+						"type": "text"
+					},
+					{
+						"key": "latitude",
+						"value": "66.9",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{localhost}}/app/login.html?phone={{phonenum}}&code={{codenum}}",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"app",
+						"login.html"
+					],
+					"query": [
+						{
+							"key": "phone",
+							"value": "{{phonenum}}",
+							"description": "手机号码"
+						},
+						{
+							"key": "code",
+							"value": "{{codenum}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "退出登录",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e90a3bf-755a-4226-8ce7-312b01f985c4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    tests[\"退出登录成功\"] = jsonData.msg === \"退出成功!\";",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "channel",
+						"value": "IOS",
+						"type": "text"
+					},
+					{
+						"key": "appVersion",
+						"value": "1.0",
+						"type": "text"
+					},
+					{
+						"key": "imei",
+						"value": "999999",
+						"type": "text"
+					},
+					{
+						"key": "model",
+						"value": "xs",
+						"type": "text"
+					},
+					{
+						"key": "systemVersion",
+						"value": "12.3",
+						"type": "text"
+					},
+					{
+						"key": "earth.house.app.auth",
+						"value": "{{auth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{localhost}}/app/logOut.html",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"app",
+						"logOut.html"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
